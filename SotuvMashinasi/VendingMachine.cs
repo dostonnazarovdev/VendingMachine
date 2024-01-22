@@ -8,27 +8,24 @@ namespace SotuvMashinasi
 {
     public class VendingMachine
     {
-        private Beverage[] beverageArray;
+        private Beverage[] beverageArray = new Beverage[10];
         private int beverageIndex = 0;
 
-        private Card[] cardArray;
+        private Card[] cardArray = new Card[10];
         private int cardIndex = 0;
 
-        private Column[] columnArray;
+        private Column[] columnArray = new Column[10];
         private int columnIndex = 0;
 
         public VendingMachine()
         {
-            beverageArray=new Beverage[10];
-            cardArray=new Card[10];
-            columnArray=new Column[10];
 
         }
 
         public void addBeverage(string name, double price)
         {
             Beverage beverage = new Beverage(name, price);
-            beverageArray[beverageIndex++] =beverage;
+            beverageArray[beverageIndex++] = beverage;
 
 
         }
@@ -106,7 +103,7 @@ namespace SotuvMashinasi
             int count = 0;
             foreach (var item in columnArray)
             {
-                if (item!=null && item.BeverageName.Equals(beverageName))
+                if (item != null && item.BeverageName.Equals(beverageName))
                 {
                     count += item.Cans;
                 }
@@ -114,11 +111,40 @@ namespace SotuvMashinasi
             return count;
         }
 
-        public int sell(String beverageName, int cardId)
+        public int sell(string beverageName, int cardId)
         {
-            return 0;
+            int cans = availableCans(beverageName);
+            if (cans == 0)
+            {
+                return -1;
+            }
+
+            Card card = getCardById(cardId);
+            if (card==null)
+            {
+                return -1;
+            }
+
+           double price= getPrice(beverageName);
+            if (card.Credit < price)
+            {
+                return -1;
+            }
+
+            card.subtractPrice(price);
+            Column column1 = new Column();
+
+            foreach (var column in columnArray)
+            {
+                if (column != null && column.BeverageName.Equals(beverageName) && column.Cans>0)
+                {
+                    column.Cans = (column.Cans - 1);
+                    return column.Colum;
+                }
+            }
+            return -1;
         }
 
-       
+
     }
 }

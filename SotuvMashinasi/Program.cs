@@ -35,13 +35,12 @@ namespace SotuvMashinasi
             vendingMachine.refillColumn(2, "Coca Cola", 10);
             vendingMachine.refillColumn(3, "Sharbat", 2);
             vendingMachine.refillColumn(4, "Suv", 8);
+            vendingMachine.refillColumn(5, "Asal choy", 8);
 
 
             Console.WriteLine("availableCansTest():   VendingMachine.availableCans()  " + availableCansTest());
 
-          
-
-            //Console.WriteLine("sellTest():   VendingMachine.sell()  " + sellTest());
+            Console.WriteLine("sellTest():   VendingMachine.sell()  " + sellTest());
 
         }
 
@@ -149,14 +148,14 @@ namespace SotuvMashinasi
 
 
             int test3 = vendingMachine.sell("Coca Cola", 1);
-            if (test3 != -1)
+            if (test3 != 2)
             {
                 Console.Error.WriteLine("sellTest: test3 ERROR");
                 return false;
             }
 
             int test4 = vendingMachine.sell("Asal choy", 3);
-            if (test4 != -1)
+            if (test4 != 5)
             {
                 Console.Error.WriteLine("sellTest: test4 ERROR");
                 return false;

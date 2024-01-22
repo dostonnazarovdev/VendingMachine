@@ -8,6 +8,10 @@ namespace SotuvMashinasi
 {
     public class Column
     {
+        public Column()
+        {
+        }
+
         public Column(int colum, string beverageName, int cans)
         {
             Colum = colum;

@@ -22,5 +22,10 @@ namespace SotuvMashinasi
         {
             Credit+= credit;
         }
+
+        public void subtractPrice(double price)
+        {
+            Credit-= price;
+        }
     }
 }
