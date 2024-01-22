@@ -106,7 +106,7 @@ namespace SotuvMashinasi
             int count = 0;
             foreach (var item in columnArray)
             {
-                if (item.BeverageName.Equals(beverageName))
+                if (item!=null && item.BeverageName.Equals(beverageName))
                 {
                     count += item.Cans;
                 }
